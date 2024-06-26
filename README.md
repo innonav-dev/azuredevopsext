@@ -1,6 +1,9 @@
 # azuredevopsext
 Azure DevOps Extension
 
+One of the first Functions in this Azure DevOps Extension is to fastly create UserStory/Task/Bug from Template and Parent Work Item.
+Credits to for sharing his example on how to do it:
+https://github.com/figueiredorui/1-click-child-links?tab=readme-ov-file
 
 ## How to Start
 
