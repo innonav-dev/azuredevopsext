@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create Work Item</title>
+    <script src="./node_modules/requirejs/require.js"></script>
+    <script>
+        console.log("Configuring RequireJS...");
+        require.config({
+            paths: {
+                "azure-devops-extension-sdk": "./node_modules/azure-devops-extension-sdk/SDK.min"
+            }
+        });
+
+            console.log("loading createWorkItem module...");
+            require(["./dist/createWorkItem"], function (app) {
+            console.log("createWorkItem loaded");
+
+            var createChildUserStory = (function () {
+                "use strict";
+                return {
+                    createUserStory: function (actionContext) {
+                        app.createUserStory(actionContext);
+                    },
+
+                    execute: function (actionContext) {
+                        this.createUserStory(actionContext);
+                    }
+                };
+            }());
+
+            var createChildTask = (function () {
+                "use strict";
+                return {
+                    createTasks: function (actionContext) {
+                        app.createTask(actionContext);
+                    },
+
+                    execute: function (actionContext) {
+                        this.createTasks(actionContext);
+                    }
+                };
+            }());
+
+            var createChildBug = (function () {
+                "use strict";
+                return {
+                    createBug: function (actionContext) {
+                        app.createBug(actionContext);
+                    },
+
+                    execute: function (actionContext) {
+                        this.createBug(actionContext);
+                    }
+                };
+            }());
+
+            console.log("register actions:");
+            require(["azure-devops-extension-sdk"], function (SDK) {
+                SDK.init();
+
+                SDK.register("create-child-user-story-item-button", function (context) {
+                    return createChildUserStory;
+                });
+
+                SDK.register("create-child-task-work-item-button", function (context) {
+                    return createChildTask;
+                });
+
+                SDK.register("create-child-bug-work-item-button", function (context) {
+                    return createChildBug;
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!-- no body needed -->
+</body>
+
+</html>

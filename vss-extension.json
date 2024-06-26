@@ -1,0 +1,97 @@
+{
+    "manifestVersion": 1,
+    "id": "test-extension-action",
+    "publisher": "INNONAV",
+    "version": "1.0.21",
+    "name": "Test Extension Action",
+    "public": false,
+    "categories": [
+        "Azure Repos"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "create-child-user-story-item-button",
+            "type": "ms.vss-web.action",
+            "description": "Create a child user story",
+            "targets": [
+                "ms.vss-work-web.work-item-context-menu"
+            ],
+            "properties": {
+                "text": "New User Story",
+                "title": "New User Story",
+                "toolbarText": "New User Story",
+                "icon": "./src/images/userStory.png",
+                "uri": "./create-child-workItem.html"
+            }
+        },
+        {
+            "id": "create-child-task-work-item-button",
+            "type": "ms.vss-web.action",
+            "description": "Create a child task",
+            "targets": [
+                "ms.vss-work-web.work-item-context-menu"
+            ],
+            "properties": {
+                "text": "New Task",
+                "title": "New Task",
+                "toolbarText": "New Task",
+                "icon": "./src/images/task.png",
+                "uri": "./create-child-workItem.html"
+            }
+        },
+        {
+            "id": "create-child-bug-work-item-button",
+            "type": "ms.vss-web.action",
+            "description": "Create a child bug",
+            "targets": [
+                "ms.vss-work-web.work-item-context-menu"
+            ],
+            "properties": {
+                "text": "New Bug",
+                "title": "New Bug",
+                "toolbarText": "New Bug",
+                "icon": "./src/images/bug.png",
+                "uri": "./create-child-workItem.html"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "./create-child-workItem.html",
+            "addressable": true
+        },
+        {
+            "path": "./dist/createWorkItem.js",
+            "addressable": true
+        },
+        {
+            "path": "./node_modules/azure-devops-extension-sdk/SDK.min.js",
+            "addressable": true
+        },
+        {
+            "path": "./node_modules/requirejs/require.js",
+            "addressable": true
+        },
+        {
+            "path": "./logo.png",
+            "addressable": true
+        },
+        {
+            "path": "./src/images/userStory.png",
+            "addressable": true
+        },
+        {
+            "path": "./src/images/task.png",
+            "addressable": true
+        },
+        {
+            "path": "./src/images/bug.png",
+            "addressable": true
+        }
+    ]
+}
